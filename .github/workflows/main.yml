@@ -1,8 +1,6 @@
 name: Package Application with Pyinstaller
 
-on:
-  push:
-    branches: [main]
+on: push
 
 jobs:
   release-project:
@@ -38,10 +36,8 @@ jobs:
 
   build-project:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
-
       - name: Package Application
         uses: JackMcKew/pyinstaller-action-windows@main
         with:
