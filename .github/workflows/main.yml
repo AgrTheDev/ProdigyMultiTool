@@ -1,5 +1,3 @@
-name: Package Application with Pyinstaller
-
 on: push
 
 jobs:
