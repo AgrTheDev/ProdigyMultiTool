@@ -18,10 +18,7 @@ jobs:
         with:
           path: src
 
-      - run: mkdir -p src/dist/windows
-      - run: echo hello > path/to/artifact/main.exe
-
       - uses: actions/upload-artifact@v2
         with:
           name: name-of-artifact
-          path: src/dist/windows/main.exe
+          path: src/dist/windows
