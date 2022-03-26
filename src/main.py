@@ -3,5 +3,5 @@ import imp
 
 import time
 
-print('hello world dsadwasdwasdwasd')
+print('hello world')
 time.sleep(5)
