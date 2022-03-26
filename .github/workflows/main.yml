@@ -22,15 +22,3 @@ jobs:
         with:
           name: my-exe
           path: src/dist/windows
-      
-    steps:
-      - uses: actions/checkout@v2
-
-      - uses: actions/download-artifact@v3
-        with:
-          name: my-artifact
-          path: path/to/artifact
-    
-      - name: Display structure of downloaded files
-        run: ls -R
-        working-directory: src/dist/windows
