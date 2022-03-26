@@ -37,6 +37,7 @@ jobs:
           asset_content_type: application/zip
 
   build-project:
+    name: Create a builded version of this project
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
