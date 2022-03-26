@@ -1,4 +1,8 @@
-on: push
+name: Package Application with Pyinstaller
+
+on:
+  push:
+    branches: [main]
 
 jobs:
   release-project:
@@ -7,7 +11,7 @@ jobs:
     needs: build-project
     steps:
       - name: Download project content
-      - uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v2
         with:
           name: main-exe
       - name: Archive project content
