@@ -20,5 +20,5 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: main.exe
+          name: my-exe
           path: src/dist/windows
