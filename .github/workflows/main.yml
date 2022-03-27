@@ -1,6 +1,9 @@
 name: Archive and release project
 
-on: workflow_dispatch
+on: workflow_dispatch:
+      inputs:
+        version:
+          type: string
 
 jobs:
   release-project:
@@ -22,8 +25,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ github.run_number }}
-          release_name: Release V${{ github.run_number }}
+          tag_name: ${{ github.event.inputs.version }}
+          release_name: Release ${{ github.event.inputs.version }}
       - name: Upload asset to Github Release
         uses: actions/upload-release-asset@v1
         env:
@@ -31,7 +34,7 @@ jobs:
         with:
           upload_url: ${{ steps.create-new-release.outputs.upload_url }}
           asset_path: ./main-exe.zip
-          asset_name: ProdigyMultiTool-v${{ github.run_number }}.zip
+          asset_name: ProdigyMultiTool-v${{ github.event.inputs.version }}.zip
           asset_content_type: application/zip
 
   build-project:
