@@ -1,6 +1,6 @@
 name: Archive and release project
 
-on: workflow_dispatch:
+on: workflow_dispatch
       inputs:
         version:
           type: string
