@@ -1,12 +1,13 @@
 name: Archive and release project
 
-on: workflow_dispatch:
-      inputs:
-        version:
-          type: string
-          required: true
-          description: Set a version for this release. Ex. 1.0.1
-          default: 1.0.1
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        required: true
+        description: Set a version for this release. Ex. 1.0.1
+        default: 1.0.1
 
 jobs:
   release-project:
