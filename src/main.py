@@ -1,4 +1,4 @@
 import time
 
-print('hello worldv')
+print('hello sus')
 time.sleep(5)
