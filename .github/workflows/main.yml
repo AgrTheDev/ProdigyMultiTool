@@ -1,4 +1,4 @@
-name: Package Application with Pyinstaller
+name: Archive and release project
 
 on: workflow_dispatch
 
