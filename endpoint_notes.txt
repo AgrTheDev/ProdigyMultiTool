@@ -1,2 +1,2 @@
 https://cdn.prodigygame.com/game/data/production/1364/game-metadata.json - Game metadata
-https://api.prodigygame.com/game-api/v1/character/{userID}?isMember=0&userID={userID} - Player Info (Requires bearer token)
+https://api.prodigygame.com/game-api/v1/character/{userID}&userID={userID} - Player Info (Requires bearer token)
