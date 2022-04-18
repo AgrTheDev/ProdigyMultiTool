@@ -4,12 +4,13 @@ from urllib.parse import urlencode, urlparse, parse_qs
 import json
 import re
 
-# Currently not working
+### OLD CODE (DOESN'T WORK)
 def tokenify(username, password):
     s = requests.Session()
     r = s.get("https://sso.prodigygame.com/game/login")
     soup = BeautifulSoup(r.content, "lxml")
     auth = soup.select_one("input[name=authenticity_token]")["value"]
+    print(auth)
     data = {}
     data["utf8"] = "✓"
     data["authenticity_token"] = auth
@@ -27,11 +28,11 @@ def tokenify(username, password):
 
     if not login.ok and not str(login.status_code).startswith("3"):
         raise Exception(f"Initial login request was unsuccessful with code {login.status_code}.")
-    print(login.text)
-    #clientID = re.findall("var client_id = '([0-9a-f]+)';", login.text)[0]
+
+    clientID = re.findall("var client_id = '([0-9a-f]+)';", login.text)[0]
     data = {}
 
-    #data["client_id"] = clientID
+    data["client_id"] = clientID
     data["redirect_uri"] = "https://play.prodigygame.com/play"
     data["response_type"] = "id_token token"
     data["scope"] = "openid profile email sid identity_provider"
@@ -39,13 +40,12 @@ def tokenify(username, password):
     data["nonce"] = "e651b05312b74195beb22f99a116c630"
     data["prompt"] = "login"
     data["mobilePlatform"] = "undefined"
-    tokenLogin = s.get("https://sso.prodigygame.com/oauth/authorize?" + urlencode(data), allow_redirects=False)
+    tokenLogin = s.get("https://sso.prodigygame.com/oauth/authorize?" + urlencode(data), allow_redirects=False);
 
     if not tokenLogin.ok and not str(tokenLogin.status_code).startswith("3"):
         raise Exception(f"First authentication request failed with a code of {tokenLogin.status_code}.")
 
     secondTokenLogin = s.get(tokenLogin.headers.get("location"), allow_redirects=False)
-    print(secondTokenLogin.text)
 
     if not secondTokenLogin.ok and not str(secondTokenLogin.status_code).startswith("3"):
         raise Exception(f"Second authentication request failed with a code of {secondTokenLogin.status_code}.")
