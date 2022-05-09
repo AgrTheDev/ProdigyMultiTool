@@ -1,9 +1,5 @@
 {
   "username": "",
   "password": "",
-  "authentication": {
-    "token": "",
-    "created_at": "",
-    "expires_in": ""
-  }
+  "userID": ""
 }
