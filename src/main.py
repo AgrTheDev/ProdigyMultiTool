@@ -15,6 +15,11 @@ ctypes.windll.kernel32.SetConsoleTitleW("Prodigy Multi Tool | https://discord.gg
 
 # Login implementation (save username, password, userID to settings.json)
 def login():
+  
+  if not os.path.isfile("settings.json"):
+    with open('settings.json', 'w+') as file:
+      json.dump({"username": "", "password": "", "userID": ""}, file, indent=4)
+  
   os.system("cls")
 
   print(logo)
@@ -25,10 +30,11 @@ def login():
   print()
   password = input(f"{Fore.CYAN}Prodigy Password\n>>> ")
   print(Fore.RESET)
-  tokenify(username, password)
+  token = tokenify(username, password)
+    
 
 # Menu system (display menu, get user input, call function)
-def main():
+def menu():
     os.system("cls")
 
     print(logo)
